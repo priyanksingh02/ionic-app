@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      MEDIA GALLERY
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      <ion-card *ngFor="let photo of photoService.photos">
+          <img [src]="photo.webview" (click)="photoService.view(photo.nativeURL)"/>          
+          
+          <ion-item (click)="operation(photo)">
+              <ion-icon name="more" slot="end"></ion-icon>
+              <ion-label>{{photo.name}}</ion-label>
+            </ion-item>
+        </ion-card>
+        
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+          <ion-fab-button (click)="photoService.takePicture()">
+            <ion-icon name="camera"></ion-icon>
+          </ion-fab-button>
+      </ion-fab>
+</ion-content>
